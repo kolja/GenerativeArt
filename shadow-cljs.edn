@@ -1,0 +1,9 @@
+{
+ :source-paths ["src"]
+ :dev-http {3000 "public"}
+ :dependencies []
+ :builds {:recursion01 {
+                   :target :browser
+                   :compiler-options {:optimizations :advanced}
+                   :modules {:main {:entries [recursion01]}}}}
+}
