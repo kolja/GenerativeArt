@@ -5,8 +5,8 @@
  :dependencies [[cider/cider-nrepl "0.24.0"]]
 
  :builds
- {:recursion01 {
+ {:sketch {
                 :target :browser
                 :compiler-options {:optimizations :advanced}
-                :modules {:main {:entries [recursion01]}}}}
+                :modules {:main {:entries [snowcrash]}}}}
 }
