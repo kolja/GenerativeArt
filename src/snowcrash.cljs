@@ -5,30 +5,42 @@
     [goog.object :as g]
     [p5 :as p5]))
 
+(defn createCanvas []
+  (js/createCanvas js/window.innerWidth js/window.innerHeight))
+
 (defn setup []
-  (js/createCanvas js/window.innerWidth js/window.innerHeight)
-  (js/noStroke))
+  (createCanvas)
+  (js/noStroke)
+  (js/colorMode js/HSL 100))
+
+(defn t [ms] (/ (system-time) ms))
 
 (defn drawcube [x y]
   (let [s (+ 5 (rand-int 40))
-        t (Math/sin (/ (system-time) 500))
-        c (+ 100 (* t 50) (rand-int 75))
-        ]
+        h (mod (+ (t 700) (- (rand-int 10) 5)) 100)
+        b (+ 40 (rand-int 30) (* (Math/sin (t 500)) 10))]
     (js/push)
     (js/translate (* 22 x) (* 22 y))
-    (js/fill c c c)
+    (js/fill h 90 b)
     (js/rect (- (/ s 2)) (- (/ s 2)) s s)
     (js/pop)))
 
 (defn draw []
-  (doseq [x (range 20) y (range 20)]
-    (drawcube y x)))
+  (let [width js/window.innerWidth
+        height js/window.innerHeight]
+  (doseq [x (range (/ height 20)) y (range (/ width 20))]
+    (drawcube y x))))
 
 (defn ^:dev/after-load start []
   (js/console.log "start"))
 
+(defn mousePressed []
+  (if (js/isLooping) (js/noLoop) (js/loop)))
+
 (doto js/window
   (g/set "setup" setup)
-  (g/set "draw" draw))
+  (g/set "draw" draw)
+  (g/set "mousePressed" mousePressed)
+  (g/set "windowResized" createCanvas))
 
 
