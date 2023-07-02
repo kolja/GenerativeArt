@@ -8,5 +8,5 @@
  {:sketch {
                 :target :browser
                 :compiler-options {:optimizations :advanced}
-                :modules {:main {:entries [snowcrash]}}}}
+                :modules {:main {:entries [landscape]}}}}
 }

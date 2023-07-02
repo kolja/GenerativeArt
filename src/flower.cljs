@@ -7,24 +7,28 @@
 (defn setup []
   (js/createCanvas js/window.innerWidth js/window.innerHeight)
   (js/noStroke)
-  #_(js/rectMode js/CENTER))
+  (js/colorMode js/HSL 100)
+  )
 
 (defn drawcube [n]
-  (let [color  (- 255 n)
-        s (* n 1.3)]
-    (js/fill 100 color n)
-    (js/rect (- (/ s 2)) (- (/ s 2)) s s)
-    (js/rotate (/ js/PI 10))))
+  (let [color (mod (* n 1.2) 100)]
+    (js/push)
+    (js/scale n)
+    (js/fill color 100 50)
+    (js/rect -5 -5 10 10)
+    (js/pop)
+    (js/rotate (/ js/PI 10))
+    ))
 
 (defn cube [n]
   (when (> n 0)
     (drawcube n)
-    (cube (- n 7))))
+    (cube (dec n))))
 
 (defn draw []
   (js/background 230)
   (js/translate 250 250)
-  (cube 250))
+  (cube 50))
 
 (defn ^:dev/after-load start []
   (js/console.log "start"))
