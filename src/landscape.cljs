@@ -69,13 +69,11 @@
   (js/pop))
 
 (defn sky []
-  (let [width js/window.innerWidth
-        height js/window.innerHeight]
     (js/push)
     (apply js/fill skyblue)
     (js/rect 0 0 width height)
     (sun (- width 200) 150)
-    (js/pop)))
+    (js/pop))
 
 (defn hill [x y s c]
   (js/push)
@@ -97,6 +95,7 @@
       (js/translate -50 520)
       (rainbow 1000)
     (js/pop)
+
     (hills)
     (cloud (mod (* (system-time) 0.08) width) 100)
     (cloud (mod (* (system-time) 0.1) width) 190)
