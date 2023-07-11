@@ -6,7 +6,7 @@
 
  :builds
  {:sketch {
-                :target :browser
-                :compiler-options {:optimizations :advanced}
-                :modules {:main {:entries [tree]}}}}
+    :target :browser
+    :compiler-options {:optimizations :advanced}
+    :modules {:main {:entries [bobbles]}}}}
 }
