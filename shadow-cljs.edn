@@ -8,5 +8,5 @@
  {:sketch {
     :target :browser
     :compiler-options {:optimizations :advanced}
-    :modules {:main {:entries [bobbles]}}}}
+    :modules {:main {:entries [GameOfLife]}}}}
 }
