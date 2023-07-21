@@ -6,7 +6,14 @@
 
  :builds
  {:sketch {
-    :target :browser
-    :compiler-options {:optimizations :advanced}
-    :modules {:main {:entries [GameOfLife]}}}}
+           :target :browser
+           :output-dir "public/js"
+           :asset-path "/js"
+           :compiler-options {:optimizations :advanced}
+           :modules {:main {:entries [landscape]}}
+           :devtools   {:http-root     "public"
+                        :http-port     8080
+                        :browser-url  "http://localhost:8080"
+                        :watch-dir    "src"}
+           }}
 }
