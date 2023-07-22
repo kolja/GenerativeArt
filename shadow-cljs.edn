@@ -9,8 +9,8 @@
            :target :browser
            :output-dir "public/js"
            :asset-path "/js"
-           :compiler-options {:optimizations :advanced}
-           :modules {:main {:entries [landscape]}}
+           :compiler-options {:optimizations :none}
+           :modules {:main {:entries [basic]}}
            :devtools   {:http-root     "public"
                         :http-port     8080
                         :browser-url  "http://localhost:8080"
