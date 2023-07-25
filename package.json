@@ -1,5 +1,5 @@
 {
-  "name": "Generative Art Workshop",
+  "name": "Generative_Art_Workshop",
   "version": "0.0.1",
   "devDependencies": {
     "shadow-cljs": "2.23.3"
