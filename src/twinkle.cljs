@@ -40,18 +40,34 @@
   (+ (* amplitude (+ (js/sin (+ (t speed) offset)) 1)) 5)
 )
 
+(defn drawstars [n] ;; stars moving around
+    (doseq [i (range n)]
+      (let [width js/window.innerWidth
+            height js/window.innerHeight
+            noise-offset 10000
+            s (twinkle-value 100 10 i)
+            x (* (js/noise (* i 1000) (t 4000)) width)
+            y (* (js/noise (+ (* i 1000) noise-offset) (t 4000)) height)]
+      (star s x y)
+)))
+
+(defn drawstars2 [n]  ;; stars stay in place, with mouse interaction
+    (doseq [i (range n)]
+      (let [width js/window.innerWidth
+            height js/window.innerHeight
+            noise-offset 10000
+            x (* (js/noise (* i 1000)) width)
+            y (* (js/noise (+ (* i 1000) noise-offset)) height)
+            s (if (and (< (js/dist x y js/mouseX js/mouseY) 50) js/mouseIsPressed)
+                (twinkle-value 50 10 i)
+                (twinkle-value 100 2 i))]
+      (star s x y)
+)))
+
 (defn draw []
-  (let [width js/window.innerWidth
-        height js/window.innerHeight
-        noise-offset 10000]
     (js/background 55 75 25)
-    (doseq [x (range 20)]
-      (star (twinkle-value 100 10 x)
-            (* (js/noise (* x 1000) (t 4000)) width)
-            (* (js/noise (+ (* x 1000) noise-offset) (t 4000)) height)
-      )
-    )
- ))
+    (drawstars 20)
+)
 
 (doto js/window
   (g/set "setup" setup)
