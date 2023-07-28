@@ -17,8 +17,10 @@
 
 (defn draw []
   (js/background 15 100 70)
+  (js/stroke 20 90 30)
   (js/strokeWeight 3)
   (swap! points take-last-20)
+  ;; (doseq [[p1 p2] (partition 2 1 @points)]
   (doseq [p1 (take 10 @points)
           p2 (take-last 10 @points)]
     (js/line (get p1 0) (get p1 1) (get p2 0) (get p2 1)))
