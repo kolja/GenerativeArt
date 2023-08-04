@@ -18,6 +18,8 @@
 (defn setup []
   (createCanvas)
   (js/noStroke)
+  (def cloud1 (cloud/create-cloud (+ 3 (rand-int 3))))
+  (def cloud2 (cloud/create-cloud (+ 3 (rand-int 3))))
   (js/colorMode js/HSL 100))
 
 (defn draw []
@@ -28,8 +30,8 @@
     (js/pop)
 
     (hills/draw)
-    (cloud/draw (mod (* (system-time) 0.1) width) 100)
-    (cloud/draw (mod (* (system-time) 0.08) width) 190)
+    (cloud/draw cloud1 (mod (* (system-time) 0.1) width) 100)
+    (cloud/draw cloud2 (mod (* (system-time) 0.08) width) 190)
     (pine/draw 200 100 10)
     (pine/draw 170 140 8)
     (pine/draw 130 80 10)
