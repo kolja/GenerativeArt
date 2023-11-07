@@ -6,14 +6,15 @@
     [p5 :as p5]))
 
 (defn setup []
-  (js/createCanvas js/window.innerWidth js/window.innerHeight)
+  (js/createCanvas 500 500)
   (js/colorMode js/HSL 100))
 
 (defn draw []
-  (js/background 15 100 70)
-  (js/push)
+  (js/background 15 70 100)
+  (js/pushpop)
     (js/translate 300 200)
-    (js/fill 100 100 45)
+    (js/fill 50 100) 45
+    (js/rotate (* 0.002 (system-time) ))
     (js/rect 0 0 100 100)
   (js/pop))
 

@@ -39,9 +39,9 @@
 (defn drawcube [x y state]
   (let [color (* 100 (- 1 state))]
     (js/push)
-    (js/translate (* cell-size x) (* cell-size y))
-    (js/fill 0 0 color)
-    (js/rect 0 0 cell-size cell-size)
+      (js/translate (* cell-size x) (* cell-size y))
+      (js/fill 0 0 color)
+      (js/rect 0 0 cell-size cell-size)
     (js/pop)))
 
 (defn update-life []
