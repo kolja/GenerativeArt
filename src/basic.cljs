@@ -7,16 +7,14 @@
 
 (defn setup []
   (js/createCanvas 500 500)
-  (js/colorMode js/HSL 100))
+  (js/colorMode js/HSL 100)
+  (js/noStroke))
 
 (defn draw []
-  (js/background 15 70 100)
-  (js/pushpop)
-    (js/translate 300 200)
-    (js/fill 50 100) 45
-    (js/rotate (* 0.002 (system-time) ))
-    (js/rect 0 0 100 100)
-  (js/pop))
+  (js/background 15 100 70)
+  (js/translate 300 200)
+  (js/fill 0 100 45)
+  (js/rect 0 0 100 100))
 
 (doto js/window
   (g/set "setup" setup)
